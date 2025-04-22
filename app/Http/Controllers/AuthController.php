@@ -33,7 +33,7 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email',
-            'password' => 'required'
+            'password' => 'required|string|min:8|confirmed'
         ]);
             $save = new User();
             $save->name = $request->name;
@@ -48,7 +48,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required|min:8|'
         ]);
         $true = $request->only('email','password');
         $remember = $request->has('remember');
