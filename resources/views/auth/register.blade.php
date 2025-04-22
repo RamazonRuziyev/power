@@ -78,7 +78,7 @@
                                         <input id="checkbox1" type="checkbox">
 {{--                                        <label class="text-muted" for="checkbox1">Agree with<a class="ms-2" href="#">Privacy Policy</a></label>--}}
                                     </div>
-                                    <button class="btn btn-primary btn-block w-100" type="submit">Hisob <yaratish></yaratish></button>
+                                    <button class="btn btn-primary btn-block w-100" type="submit">Hisob yaratish </button>
                                 </div>
 {{--                                <h6 class="text-muted mt-4 or">Or signup with</h6>--}}
 

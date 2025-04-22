@@ -24,6 +24,11 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function role(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Role::class);
+    }
+
     public function petition(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
        return $this->hasMany(Petition::class);

@@ -35,15 +35,13 @@ class AuthController extends Controller
             'email' => 'required|unique:users,email',
             'password' => 'required'
         ]);
-//        dd($request->all());
             $save = new User();
             $save->name = $request->name;
             $save->email = $request->email;
             $save->password = Hash::make($request->password);
+            $save->role_id = 3;
             $save->save();
             return redirect()->route('login');
-
-
     }
 // login
     public function sing(Request $request)
@@ -53,14 +51,14 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
         $true = $request->only('email','password');
-        $result = $request->result;
-        if (Auth::attempt($true,$result))
+        $remember = $request->has('remember');
+        if (Auth::attempt($true,$remember))
         {
-            if ('123' == $request->password && Auth::check() && Auth::user()->role == 'adm')
+            if ('123' == $request->password && Auth::check() && Auth::user()->role_id == 1)
             {
                 return redirect()->route('admin');
             }
-            elseif ('12345678' == $request->password && Auth::check() && Auth::user()->role == 'super')
+            elseif ('12345678' == $request->password && Auth::check() && Auth::user()->role_id == 2)
             {
                 return  redirect()->route('superAdmin');
             }
@@ -70,7 +68,7 @@ class AuthController extends Controller
         }
         else
         {
-            return back();
+            return with('xato');
         }
     }
 }

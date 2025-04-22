@@ -23,7 +23,7 @@
                             <tbody>
                             @foreach($employees as $employee)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{($employees->currentPage() -1 ) * $employees->perPage() + ($loop->index +1)  }}</td>
                                     <td>{{ $employee->name }}</td>
                                 @php
                                     $total = $petitions->where('employee', $employee->id)->count();
@@ -38,7 +38,7 @@
                             </tbody>
                         </table>
                         <br>
-                        <div style="margin: 20px;"> {{$petitions->links()}}</div>
+                        <div style="margin: 20px;"> {{$employees->links()}}</div>
                     </div>
                 </div>
             </div>

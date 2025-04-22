@@ -16,7 +16,7 @@ class isUserMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role == 'usr')
+        if (Auth::check() && Auth::user()->role_id == 3)
         {
             return $next($request);
         }else

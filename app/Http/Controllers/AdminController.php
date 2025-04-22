@@ -29,7 +29,7 @@ class AdminController extends Controller
            ->update([
                 'status' => 1
             ]);
-        return redirect()->back();
+        return redirect()->route('admin');
     }
 
     public function notification_cancel(Petition $petition)
@@ -38,7 +38,7 @@ class AdminController extends Controller
             ->update([
                 'status' => 2
             ]);
-        return redirect()->back();
+        return redirect()->route('admin');
     }
 
     public function notificationShow(Petition $petition)

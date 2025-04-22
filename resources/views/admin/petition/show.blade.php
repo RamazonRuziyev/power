@@ -17,7 +17,7 @@
                                 <th>MFY</th>
                                 <th>Qishloqg'i</th>
                                 <th>Telefon</th>
-                                <th>Masul Xodim</th>
+{{--                                <th>Masul Xodim</th>--}}
                                 <th>tavsifi</th>
                                 <th>Action</th>
                             </tr>
@@ -28,7 +28,7 @@
                                     <td>{{$petition->mfy}}</td>
                                     <td>{{$petition->village}}</td>
                                     <td>{{$petition->phone}}</td>
-                                    <td>{{$petition->employee}}</td>
+{{--                                    <td>{{$petition->employee}}</td>--}}
                                     <td>{{$petition->description}}</td>
                                     <td class="d-flex">
                                         <a class="btn btn-primary"  href="{{route('dashboard.notification.accept',$petition)}}">Accept</a>&nbsp;&nbsp;

@@ -8,6 +8,7 @@ use App\Models\Petition;
 use App\Models\User;
 use App\Notifications\PetitionCreatedNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -19,20 +20,20 @@ class PetitonController extends Controller
     public function index()
     {
         $petitions = Petition::query()
+            ->join('users', 'petitions.employee', '=', 'users.id')
+            ->select('petitions.*', 'users.name as employee_name')
             ->orderByDesc('id')
             ->paginate(7);
         return view('profiles.petition.view',compact('petitions'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $users = User::where('role','=','adm')->get();
+        $users = User::where('role_id','=',1)->get();
         return view('profiles.petition.create',compact('users'));
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -60,7 +61,6 @@ class PetitonController extends Controller
                 return redirect()->back()->with('error', 'Foydalanuvchi topilmadi.');
             }
             event(new PetitionEvent($petition)); // Petition ma'lumotini yuborish
-//            Alert::success('Success Title', 'Success Message');
             Alert::success('Muvaffaqiyat', 'Petitsiya muvaffaqiyatli yaratildi');
             return  redirect()->back();
         }
@@ -71,7 +71,6 @@ class PetitonController extends Controller
                 ->with('error', 'Ma\'lumotlarni saqlashda xatolik yuz berdi.');
         }
     }
-
     /**
      * Display the specified resource.
      */
