@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title','Petition accept')
+@section('title','Ariza qabul qilingan')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -34,7 +34,7 @@
                                     <td>{{$petition->description}}</td>
                                     <td>
                                         @if($petition->status == 1)
-                                            <span class="btn btn-success">Qabul qiling</span>
+                                            <span class="btn btn-success">Qabul qilingan ariza</span>
                                         @endif
                                     </td>
                                 </tr>

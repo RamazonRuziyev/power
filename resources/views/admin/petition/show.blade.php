@@ -31,8 +31,8 @@
 {{--                                    <td>{{$petition->employee}}</td>--}}
                                     <td>{{$petition->description}}</td>
                                     <td class="d-flex">
-                                        <a class="btn btn-primary"  href="{{route('dashboard.notification.accept',$petition)}}">Accept</a>&nbsp;&nbsp;
-                                        <a class="btn btn-danger"  href="{{route('dashboard.notification.cancel',$petition)}}">Cancel</a>
+                                        <a class="btn btn-primary"  href="{{route('dashboard.notification.accept',$petition)}}">Qabul qiling</a>&nbsp;&nbsp;
+                                        <a class="btn btn-danger"  href="{{route('dashboard.notification.cancel',$petition)}}">Bekor qiling</a>
                                     </td>
                                 </tr
                             </tbody>

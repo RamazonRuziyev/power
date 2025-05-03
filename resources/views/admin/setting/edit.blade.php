@@ -1,38 +1,37 @@
-@extends('SuperAdmin.layout.master')
-@section('title','Tahrirlash')
+@extends('admin.layout.master')
+@section('title','Profil sozlash')
 @section('content')
     <div class="row">
-        <!-- left column -->
         <div class="col-md-12 p-3" >
-            <!-- jquery validation -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Tahrirlash</h3>
+                    <h3 class="card-title">Profil sozlamalari</h3>
                 </div>
-                <!-- /.card-header -->
-                <!-- form start -->
-                <form   method="post" action="{{route('user.update',$user)}}" enctype="multipart/form-data">
+                <form action="{{route('update.setting.admin',\Illuminate\Support\Facades\Auth::user()->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="card-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Ism</label>
-                            <input type="text" value="{{$user->name}}" name="name" class="form-control @error('name') is-invalid @enderror" id="exampleInputEmail1" placeholder="rayon name">
-                            @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <input value="{{\Illuminate\Support\Facades\Auth::user()->name}}" type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="rayon name">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email</label>
-                            <input type="text" value="{{$user->email}}" name="name" class="form-control @error('name') is-invalid @enderror" id="exampleInputEmail1" placeholder="rayon name">
-                            @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <label class="col-form-label">Elektron pochta</label>
+                            <input value="{{\Illuminate\Support\Facades\Auth::user()->email}}" class="form-control" name="email" type="email" required="" placeholder="email">
                         </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">Rasm</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input name="image" type="file" class="custom-file-input" id="exampleInputFile">
+                                    <label class="custom-file-label" for="exampleInputFile">Faylni tanlang</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Yuklash</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-group mt-3">
                             <label>Eski parol</label>
                             <div class="form-input position-relative">
@@ -67,14 +66,11 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /.card-body -->
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Tahrirlash</button>
                     </div>
                 </form>
             </div>
-
         </div>
-
     </div>
 @endsection

@@ -19,7 +19,10 @@ class SuperAdminController extends Controller
     }
     public function index()
     {
-        $users = User::query()->where('role_id','!=',2)
+        $users = User::query()
+        ->select('users.*','roles.name as role_name')
+        ->join('roles','users.role_id' ,'=','roles.id' )
+        ->where('role_id','!=',2)
         ->orderByDesc('id')
         ->paginate(3);
         return view('SuperAdmin.user.index',compact('users'));
@@ -89,7 +92,6 @@ class SuperAdminController extends Controller
             ->orderByDesc('petitions.id')
             ->paginate(10);
         return view('SuperAdmin.xodim.show',compact('petitions'));
-
     }
     public function setting_super()
     {
@@ -126,6 +128,20 @@ class SuperAdminController extends Controller
         }
         $user->update();
         return redirect()->route('superAdmin');
+    }
 
+    public function superAdmin_petition()
+    {
+        $petitions = Petition::query()
+            ->join('users', 'petitions.employee', '=', 'users.id')
+            ->select('petitions.*', 'users.name as employee_name')
+            ->orderByDesc('id')
+            ->paginate(7);
+        return view('SuperAdmin.petition.index',compact('petitions'));
+    }
+    public function superAdminPetitionDelete(Petition $petition)
+    {
+        $petition->delete();
+        return redirect()->route('superAdmin');
     }
 }

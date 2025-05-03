@@ -19,7 +19,8 @@ class isUserMiddleware
         if (Auth::check() && Auth::user()->role_id == 3)
         {
             return $next($request);
-        }else
+        }
+        else
         {
             return redirect()->route('login');
         }

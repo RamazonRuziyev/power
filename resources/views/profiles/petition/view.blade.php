@@ -43,9 +43,9 @@
                                         @if($petition->status == 0)
                                             <span class="btn btn-warning">tekshirilmoqda</span>
                                         @elseif($petition->status == 1)
-                                            <span class="btn btn-success">Qabul qilingan</span>
+                                            <span class="btn btn-success">Qabul qilingan ariza</span>
                                         @elseif($petition->status == 2)
-                                            <span class="btn btn-danger">Bekor qilish</span>
+                                            <span class="btn btn-danger">Bekor qiligan ariza </span>
                                         @endif
                                     </td>
                                     <td class="d-flex">

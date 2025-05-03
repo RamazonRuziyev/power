@@ -1,5 +1,5 @@
 @extends('SuperAdmin.layout.master')
-@section('title','profile setting')
+@section('title','profil setting')
 @section('content')
     <div class="row">
         <div class="col-md-12 p-3" >
@@ -7,7 +7,7 @@
                 <div class="card-header">
                     <h3 class="card-title">Profil sozlamalari</h3>
                 </div>
-                <form action="{{route('update.settingSuper',\Illuminate\Support\Facades\Auth::user()->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('update.settingSuper',\Illuminate\Support\Facades\Auth::user()->i    d)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="card-body">
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Saqlash</button>
+                        <button type="submit" class="btn btn-primary">Tahrirlash</button>
                     </div>
                 </form>
             </div>

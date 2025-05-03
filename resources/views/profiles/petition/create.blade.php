@@ -1,5 +1,5 @@
 @extends('profiles.layout.master')
-@section('title','petition')
+@section('title','Ariza junatish')
 @section('content')
     <div class="row">
         <!-- left column -->
@@ -15,7 +15,7 @@
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Fio</label>
+                            <label for="exampleInputEmail1">Familiya, Ism, Ochestva</label>
                             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="exampleInputEmail1" placeholder="rayon name">
                             @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -24,7 +24,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="">Mfy</label> <br>
+                            <label for="">Mahalla Fuqarolar Yig‘ini</label> <br>
                             <select name="mfy" id="" class="form-control @error('mfy') is-invalid @enderror">
                                 <option selected disabled >Mfy</option>
                                 <option>Churkalon Mfy</option>
@@ -47,7 +47,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Telefon</label>
+                            <label for="exampleInputEmail1">Telefon raqam</label>
                             <input type="text" name="phone" class="form-control" id="exampleInputEmail1" placeholder="Telefon">
                         </div>
                         <div class="form-group">

@@ -26,7 +26,15 @@
                                         <td>{{($users->currentPage() -1 ) * $users->perPage() + ($loop->index + 1)}}</td>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td>role</td>
+                                        <td>
+                                            @if($user->role_id == 1)
+                                                Xodim
+                                            @elseif($user->role_id ==2)
+                                                Administrator
+                                            @elseif($user->role_id == 3)
+                                                user
+                                            @endif
+                                        </td>
                                         <td class="d-flex">
                                             <a class="btn btn-success" href="{{route('user.edit',$user)}}" title="Tahrirlash"><i class="far fa-edit"></i></a>&nbsp;&nbsp;
                                             <form action="{{route('user.destroy',$user)}}" method="post" enctype="multipart/form-data">

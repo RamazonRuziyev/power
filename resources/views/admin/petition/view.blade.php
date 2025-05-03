@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title','xabar')
+@section('title','xabarlar')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -35,7 +35,7 @@
                                     <td>{{$petition->description}}</td>
                                     <td class="d-flex">
                                         <a class="btn btn-primary accept-btn" data-petition-id="{{ $petition->id }}" href="{{route('dashboard.notification.accept',$petition)}}">Qabul qiling</a>&nbsp;&nbsp;
-                                        <a class="btn btn-danger"  href="{{route('dashboard.notification.cancel',$petition)}}">Bekor qilish</a>
+                                        <a class="btn btn-danger"  href="{{route('dashboard.notification.cancel',$petition)}}">Bekor qiling</a>
                                     </td>
                                 </tr>
                             @endforeach

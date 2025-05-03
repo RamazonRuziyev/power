@@ -6,7 +6,6 @@ use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\RoleAdminSuperController;
 use App\Http\Controllers\SuperAdminController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +22,7 @@ Route::get('/', function () {
 });
 Route::get('/login',[AuthController::class,'login'])->name('login');
 Route::get('/Auth',[AuthController::class,'register'])->name('register');
-Route::get('/logout',[AuthController::class,'logout'])->name('logout');
+Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 Route::post('/save',[AuthController::class,'save'])->name('save');
 Route::post('/sing',[AuthController::class,'sing'])->name('sing');
 
@@ -36,6 +35,8 @@ Route::group(['prefix'=>'profiles','middleware'=>['auth' , 'isUser']],function (
 
 Route::group(['prefix' => 'dashboard','middleware'=>['auth' ,'isAdmin']],function () {
     Route::get('/panel',[AdminController::class,'admin'])->name('admin');
+    Route::get('/setting',[AdminController::class,'admin_setting'])->name('admin.setting');
+    Route::put('//update/setting/{user}',[AdminController::class,'admin_settingUpdate'])->name('update.setting.admin');
     Route::get('/dashboard_notifications',[AdminController::class,'notifications'])->name('dashboard_notifications');
     Route::get('/notification/accept/{petition}',[AdminController::class,'notification_accept'])->name('dashboard.notification.accept');
     Route::get('/notification/cancel/{petition}',[AdminController::class,'notification_cancel'])->name('dashboard.notification.cancel');
@@ -43,9 +44,7 @@ Route::group(['prefix' => 'dashboard','middleware'=>['auth' ,'isAdmin']],functio
     Route::get('/petition_accept',[AdminController::class,'petition_accept'])->name('petition_accept');
     Route::get('/petition_cancel',[AdminController::class,'petition_cancel'])->name('petition_cancel');
 });
-
 Route::post('/pusher' ,[PetitonController::class,'petition_notification'])->name('notification.petitions');
-
 Route::group(['prefix' => 'Administrator','middleware'=>['auth' ,'superAdmin']],function () {
     Route::get('/superAdmin',[SuperAdminController::class,'superAdmin'])->name('superAdmin');
     Route::get('/user/view',[SuperAdminController::class,'index'])->name('user.view');
@@ -60,4 +59,12 @@ Route::group(['prefix' => 'Administrator','middleware'=>['auth' ,'superAdmin']],
     Route::get('/role',[RoleAdminSuperController::class,'role_index'])->name('role');
     Route::get('/role/yaratish',[RoleAdminSuperController::class,'role_create'])->name('role.create');
     Route::post('/role/store',[RoleAdminSuperController::class,'store'])->name('roles.store');
+    Route::get('/superAdmin/petition',[SuperAdminController::class,'superAdmin_petition'])->name('superAdmin.petition');
+    Route::delete('/superAdmin/petition/delete/{petition}',[SuperAdminController::class,'superAdminPetitionDelete'])->name('superAdmin.petition.delete');
+    Route::delete('role/destroy/{role}',[RoleAdminSuperController::class,'role_destroy'])->name('role.destroy');
+    Route::get('/role/edit/{role}',[RoleAdminSuperController::class,'role_edit'])->name('role_edit');
+    Route::put('/roles/update/{role}',[RoleAdminSuperController::class,'roles_update'])->name('roles.update');
+    Route::get('/user/role',[RoleAdminSuperController::class,'user_role'])->name('user.role');
+    Route::get('/user/role/edit/{user}',[RoleAdminSuperController::class,'user_roleEdit'])->name('user.roleEdit');
+    Route::put('/user/role/update/{user}',[RoleAdminSuperController::class,'user_roleUpdate'])->name('user.roleUpdate');
 });

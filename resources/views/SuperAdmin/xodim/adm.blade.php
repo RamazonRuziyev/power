@@ -43,9 +43,9 @@
                                     <td>{{$petition->description}}x </td>
                                     <td>
                                         @if($petition->status == 1)
-                                            <span class="btn btn-success">Qabul qilingan</span>
+                                            <span class="btn btn-success">Qabul qilingan ariza</span>
                                         @elseif($petition->status == 2)
-                                            <span class="btn btn-danger">Bekor qilingan</span>
+                                            <span class="btn btn-danger">Bekor qilingan ariza</span>
                                         @endif
                                     </td>
                                 </tr>

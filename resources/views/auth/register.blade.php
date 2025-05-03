@@ -39,11 +39,9 @@
         <div class="col-12 p-0">
             <div class="login-card">
                 <div>
-{{--                    <div>--}}
-{{--                        <a class="logo" href="">--}}
+{{--                    <div><a class="logo" href="">--}}
 {{--                            <img class="img-fluid for-light" src="{{asset('register/assets/images/logo/login.png')}}" alt="looginpage">--}}
-{{--                            <img class="img-fluid for-dark" src="../assets/images/logo/logo_dark.png" alt="looginpage">--}}
-{{--                        </a>--}}
+{{--                            <img class="img-fluid for-dark" src="../assets/images/logo/logo_dark.png" alt="looginpage"></a>--}}
 {{--                    </div>--}}
                     <div class="login-main">
                         <form class="theme-form" action="{{route('save')}}" method="post">
@@ -53,36 +51,40 @@
                             <div class="form-group">
                                 <label class="col-form-label pt-0">Ism</label>
                                 <div class="row g-2">
-                                    <input class="form-control" name="name" type="text"  placeholder="Ism">
+                                    <input class="form-control" name="name" type="text" required placeholder=" Name">
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">Elektron pochta</label>
-                                    <input class="form-control" name="email" type="email"  placeholder="Elektron pochta">
+                                    <input class="form-control" name="email" type="email" required="" placeholder="email">
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">Parol</label>
                                     <div class="form-input position-relative">
-                                        <input class="form-control" type="password" name="password" required="" placeholder="Parol">
-                                        <div class="show-hide"><span class="show"></span></div>
+                                        <input class="form-control" id="passwordP" type="password" name="password" required="" placeholder="Password">
+                                        <div class="show-hide" id="toggle-password1">
+                                            <span class="show"></span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-form-label">Paroln takrorlashi</label>
+                                    <label class="col-form-label">Parolni takrorlashi</label>
                                     <div class="form-input position-relative">
-                                        <input class="form-control" type="password" name="repeat" required="" placeholder="Parolni takrorlash">
-                                        <div class="show-hide"><span class="show"></span></div>
+                                        <input class="form-control" id="password" type="password" name="repeat" required="" placeholder="Password repeat">
+                                        <div class="show-hide" id="toggle-password">
+                                            <span class="show"></span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group mb-0">
                                     <div class="checkbox p-0">
                                         <input id="checkbox1" type="checkbox">
-{{--                                        <label class="text-muted" for="checkbox1">Agree with<a class="ms-2" href="#">Privacy Policy</a></label>--}}
+                                        {{--                                        <label class="text-muted" for="checkbox1">Agree with<a class="ms-2" href="#">Privacy Policy</a></label>--}}
                                     </div>
-                                    <button class="btn btn-primary btn-block w-100" type="submit">Hisob yaratish </button>
+                                    <button class="btn btn-primary btn-block w-100" type="submit">Hisob yaratish</button>
                                 </div>
-{{--                                <h6 class="text-muted mt-4 or">Or signup with</h6>--}}
+                                {{--                                <h6 class="text-muted mt-4 or">Or signup with</h6>--}}
 
-                                <p class="mt-4 mb-0">Hisobingiz bormi ?<a class="ms-2" href="{{route('login')}}">tizimga kirish</a></p>
+                                <p class="mt-4 mb-0">Hisobingiz bormi ?<a class="ms-2" href="{{route('login')}}">Register</a></p>
                         </form>
                     </div>
                 </div>
@@ -105,7 +107,34 @@
     <script src="{{asset('register/assets/js/script.js')}}"></script>
     <!-- login js-->
     <!-- Plugin used-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" type="text/javascript"></script>
+    <script>
+        document.getElementById('toggle-password').addEventListener('click', function() {
+            var passwordField = document.getElementById('password');
+            var toggleText = this.querySelector('.show');
+
+            // Toggle the password visibility
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text'; // Change to text to show the password
+                toggleText.textContent = 'Hide'; // Change button text to "Hide"
+            } else {
+                passwordField.type = 'password'; // Change to password to hide the password
+                toggleText.textContent = ''; // Change button text to "Show"
+            }
+        });
+        document.getElementById('toggle-password1').addEventListener('click', function() {
+            var passwordField = document.getElementById('passwordP');
+            var toggleText = this.querySelector('.show');
+
+            // Toggle the password visibility
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';  // Change to text to show the password
+                toggleText.textContent = 'Hide';  // Change button text to "Hide"
+            } else {
+                passwordField.type = 'password';  // Change to password to hide the password
+                toggleText.textContent = '';  // Change button text to "Show"
+            }
+        });
+    </script>
 </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 @extends('profiles.layout.master')
-@section('title','petition')
+@section('title','Ariza tahrirlash')
 @section('content')
     <div class="row">
         <!-- left column -->
@@ -7,7 +7,7 @@
             <!-- jquery validation -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Xbarlarni tahrirlash</h3>
+                    <h3 class="card-title">Xabarlarni tahrirlash</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -54,7 +54,7 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">tahrirlash</button>
+                        <button type="submit" class="btn btn-primary">Tahrirlash</button>
                     </div>
                 </form>
             </div>

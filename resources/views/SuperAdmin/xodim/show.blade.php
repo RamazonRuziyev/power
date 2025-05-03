@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-header d-flex  align-items-center justify-content-around">
-                            <h3 class="card-title">Ariza Kurish</h3>
+                            <h3 class="card-title">Ariza Ko'rish</h3>
                             <a class="btn btn-success" id="downloadWord" href="">Word</a>
                             <a class="btn btn-success" id="printTable" href="">Print</a>
                             <a class="btn btn-success" id="downloadExcel" href="#">Excel</a>
@@ -42,9 +42,9 @@
                                     <td>{{ $petition->description }} </td>
                                     <td>
                                         @if($petition->status == 1)
-                                            <span class="btn btn-success">Qabul qilingan</span>
+                                            <span class="btn btn-success">Qabul qilingan ariza</span>
                                         @elseif($petition->status == 2)
-                                            <span class="btn btn-danger">Bekor qilingan</span>
+                                            <span class="btn btn-danger">Bekor qilingan ariza</span>
                                         @endif
                                     </td>
                                 </tr>

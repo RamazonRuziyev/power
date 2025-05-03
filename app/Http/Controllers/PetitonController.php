@@ -37,13 +37,8 @@ class PetitonController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePetitionRequest $request)
     {
-        $request->validate([
-            'name'=> 'required|string',
-            'mfy' => 'required',
-            'village' => 'required',
-        ]);
         try {
             $petition = new  Petition();
             $petition->fio = $request->name;
@@ -121,9 +116,6 @@ class PetitonController extends Controller
         return response()->json([
             'status' => true,
             'petition' => $petition,
-//            'isNotReadPe  titionText'=>$isNotReadPetitionText,
-//            'joinUserIdPetiton'=>$joinUserIdPetiton,
-//            'sendingTimes'=>$sendingTimes
         ]);
     }
 }

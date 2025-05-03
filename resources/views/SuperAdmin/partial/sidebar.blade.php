@@ -66,7 +66,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
-                            Xodim
+                            Xodimlar
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -91,25 +91,39 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                            Role
+                            Rol
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview {{(request()->is('Administrator/role') || request()->is('Administrator/role/yaratish'))?'d-block' : '' }}">
+                    <ul class="nav nav-treeview {{(request()->is('Administrator/role') || request()->is('Administrator/role/yaratish') || request()->is('Administrator/user/role') || request()->routeIs('user.roleEdit'))?'d-block' : '' }}">
                         <li class="nav-item">
                             <a style="color: {{request()->is('Administrator/role/yaratish') ? 'blue' : ''}}" href="{{route('role.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Role yaratish</p>
+                                <p>Rol yaratish</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a style="color: {{request()->is('Administrator/role') ? 'blue' : ''}}" href="{{route('role')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Role</p>
+                                <p>Rol</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="color: {{request()->is('Administrator/user/role') ? 'blue' : ''}}" href="{{route('user.role')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Rol user</p>
                             </a>
                         </li>
 
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('superAdmin.petition')}}" class="nav-link active">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Xabarlar
+                        </p>
+                    </a>
                 </li>
 
             </ul>

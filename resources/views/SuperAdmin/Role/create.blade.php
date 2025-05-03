@@ -1,5 +1,5 @@
 @extends('SuperAdmin.layout.master')
-@section('title','Role yaratish')
+@section('title','Rol yaratish')
 @section('content')
     <div class="row">
         <div class="col-md-12 p-3" >

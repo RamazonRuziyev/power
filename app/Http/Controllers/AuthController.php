@@ -16,59 +16,45 @@ class AuthController extends Controller
     {
         return view('auth.login');
     }
-
     public function register()
     {
         return view('auth.register');
     }
-
     public function logout()
     {
         Auth::logout();
         return redirect()->route('login');
     }
- // register
     public function save(StoreRegisterRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|unique:users,email',
-            'password' => 'required|string|min:8|confirmed'
+        $users = User::cretae([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => 3
         ]);
-            $save = new User();
-            $save->name = $request->name;
-            $save->email = $request->email;
-            $save->password = Hash::make($request->password);
-            $save->role_id = 3;
-            $save->save();
-            return redirect()->route('login');
+        return redirect()->route('login');
     }
-// login
     public function sing(Request $request)
     {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required|min:8|'
-        ]);
         $true = $request->only('email','password');
         $remember = $request->has('remember');
         if (Auth::attempt($true,$remember))
         {
-            if ('123' == $request->password && Auth::check() && Auth::user()->role_id == 1)
-            {
-                return redirect()->route('admin');
-            }
-            elseif ('12345678' == $request->password && Auth::check() && Auth::user()->role_id == 2)
-            {
-                return  redirect()->route('superAdmin');
-            }
-            else{
+            if (Auth::attempt($true, $remember)) {
+                $user = Auth::user();
+                if ($user->role_id == 1) {
+                    return redirect()->route('admin');
+                }
+                if ($user->role_id == 2) {
+                    return redirect()->route('superAdmin');
+                }
                 return redirect()->route('profiles');
             }
         }
         else
         {
-            return with('xato');
+            return back();
         }
     }
 }

@@ -20,7 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'role',
+        'role_id',
         'password',
     ];
 
@@ -31,7 +31,7 @@ class User extends Authenticatable
 
     public function petition(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-       return $this->hasMany(Petition::class);
+        return $this->hasMany(Petition::class);
     }
     /**
      * The attributes that should be hidden for serialization.

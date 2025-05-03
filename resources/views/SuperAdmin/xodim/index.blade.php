@@ -6,7 +6,7 @@
             <div class="col-md-12 p-3">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Xodim Kurish</h3>
+                        <h3 class="card-title">Xodim Ko'rish</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">

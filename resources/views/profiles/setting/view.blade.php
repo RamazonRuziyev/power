@@ -1,5 +1,5 @@
 @extends('profiles.layout.master')
-@section('title','profile setting')
+@section('title','Profil sozlash')
 @section('content')
     <div class="row">
         <div class="col-md-12 p-3" >
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Saqlash</button>
+                        <button type="submit" class="btn btn-primary">Tahrirlash</button>
                     </div>
                 </form>
             </div>

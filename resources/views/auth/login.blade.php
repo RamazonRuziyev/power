@@ -61,8 +61,10 @@
                             <div class="form-group">
                                 <label class="col-form-label">Parol</label>
                                 <div class="form-input position-relative">
-                                    <input class="form-control" type="password" name="password" required="" placeholder="*********">
-                                    <div class="show-hide"><span class="show"></span></div>
+                                    <input class="form-control" id="passwordP" type="password" name="password" required="" placeholder="Password">
+                                    <div class="show-hide" id="toggle-password1">
+                                        <span class="show"></span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group mb-0">
@@ -100,6 +102,20 @@
 </div>
 
 
+<script>
+    document.getElementById('toggle-password1').addEventListener('click', function() {
+        var passwordField = document.getElementById('passwordP');
+        var toggleText = this.querySelector('.show');
 
+        // Toggle the password visibility
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';  // Change to text to show the password
+            toggleText.textContent = 'Hide';  // Change button text to "Hide"
+        } else {
+            passwordField.type = 'password';  // Change to password to hide the password
+            toggleText.textContent = '';  // Change button text to "Show"
+        }
+    });
+</script>
 </body>
 </html>

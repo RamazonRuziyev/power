@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title','Petition Cancel')
+@section('title','Ariza bekor qiligan')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -17,7 +17,7 @@
                                 <th style="width: 10px">#</th>
                                 <th>FIO</th>
                                 <th>MFY</th>
-                                <th>Qishloqg'i</th>
+                                <th>Qishlog'i</th>
                                 <th>Telefon</th>
                                 <th>tavsifi</th>
                                 <th>Action</th>
@@ -34,7 +34,7 @@
                                     <td>{{$petition->description}}</td>
                                     <td>
                                         @if($petition->status == 2)
-                                            <span class="btn btn-danger">Bekor qilish</span>
+                                            <span class="btn btn-danger">Bekor qilingan ariza</span>
                                         @endif
                                     </td>
                                 </tr>

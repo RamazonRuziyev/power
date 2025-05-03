@@ -1,18 +1,22 @@
 <nav class="main-header navbar navbar-expand navbar-dark">
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
+    <ul class="navbar-nav d-flex  align-items-center">
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
 {{--        <li class="nav-item d-none d-sm-inline-block">--}}
 {{--            <a href="" class="nav-link">Home</a>--}}
 {{--        </li>--}}
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Aloqa</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{route('logout')}}" class="nav-link">Chiqish</a>
-        </li>
+{{--        <li class="nav-item d-none d-sm-inline-block">--}}
+{{--            <a href="#" class="nav-link">Aloqa</a>--}}
+{{--        </li>--}}
+{{--        <li class="nav-item d-none d-sm-inline-block">--}}
+{{--            <a href="{{route('logout')}}" class="nav-link">Chiqish</a>--}}
+{{--        </li>--}}
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit">Profil Chiqish</button>
+        </form>
     </ul>
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -60,7 +64,7 @@
                 </a>
                 @endforeach
                 <div class="dropdown-divider"></div>
-                <a href="{{route('dashboard_notifications')}}" class="dropdown-item dropdown-footer">See All Notifications</a>
+                <a href="{{route('dashboard_notifications')}}" class="dropdown-item dropdown-footer">Barcha xabarlar</a>
             </div>
         </li>
         <li class="nav-item">
