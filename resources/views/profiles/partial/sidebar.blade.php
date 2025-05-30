@@ -61,6 +61,14 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a style="color: {{request()->is('profiles/setting') ? 'blue' : ''}}" href="{{route('setting')}}" class="nav-link">
+                        <i class="nav-icon fas fa-columns"></i>
+                        <p>
+                            sozlash
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -49,7 +49,8 @@
                                         @endif
                                     </td>
                                     <td class="d-flex">
-                                        <a class="btn btn-primary" href="{{route('petition.edit',$petition)}}">Tahrirlash</a>&nbsp;&nbsp;
+                                        <a class="btn btn-primary" href="{{route('petition.edit',$petition)}} " title="Tahrirlash"><i class="far fa-edit"></i></a>&nbsp;&nbsp;
+
                                     </td>
                                 </tr>
                             @endforeach

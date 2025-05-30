@@ -28,7 +28,7 @@
                                             <form action="{{route('role.destroy',$role)}}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger show_confirm" title="O'chirish"><i class="far fa-trash-alt"></i></button>
+                                                <button type="submit"  id="delete" class="btn btn-danger show_confirm" title="O'chirish"><i class="far fa-trash-alt"></i></button>
                                             </form>
                                         </td>
                                     </tr>
@@ -44,3 +44,27 @@
         </div>
     </div>
 @endsection
+@push('script')
+    <script>
+        $(function (){
+            $('#delete').on('click',function (e)
+            {
+                e.preventDefault();
+                var form = $(this).closest('form');
+                swal({
+                    title : "Are you sure ?",
+                    text : "You want to delete this record",
+                    type : "warning",
+                    buttons : ["No","Yes"],
+                    confirmButtonColor: "#dc3545"
+                }).then(function (result)
+                {
+                    if (result)
+                    {
+                        form.submit()
+                    }
+                })
+            })
+        })
+    </script>
+@endpush

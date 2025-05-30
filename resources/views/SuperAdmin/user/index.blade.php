@@ -40,7 +40,9 @@
                                             <form action="{{route('user.destroy',$user)}}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger show_confirm" title="O'chirish"><i class="far fa-trash-alt"></i></button>
+                                                <div class="delete">
+                                                <button type="submit" id="delete" class="btn btn-danger show_confirm delete" title="O'chirish"><i class="far fa-trash-alt"></i></button>
+                                                </div>
                                             </form>
                                         </td>
                                     </tr>
@@ -76,5 +78,25 @@
                     }
                 });
         });
+        $(function (){
+            $('#delete').on('click',function (e)
+            {
+                e.preventDefault();
+                var form = $(this).closest('form');
+                swal({
+                    title : "Are you sure ?",
+                    text : "You want to delete this record",
+                    type : "warning",
+                    buttons : ["No","Yes"],
+                    confirmButtonColor: "#dc3545"
+                }).then(function (result)
+                {
+                    if (result)
+                    {
+                        form.submit()
+                    }
+                })
+            })
+        })
     </script>
 @endpush

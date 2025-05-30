@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Models\Role;
 use App\Models\User;
@@ -20,8 +19,11 @@ class RoleAdminSuperController extends Controller
     {
         return view('SuperAdmin.Role.create');
     }
-    public function store(StoreRoleRequest $request)
+    public function store(Request $request)
     {
+        $request->validate([
+            'name'=> 'required|string',
+        ]);
         try {
             $role = new Role();
             $role->name = $request['name'];
@@ -46,6 +48,9 @@ class RoleAdminSuperController extends Controller
     }
     public function roles_update(Role $role , UpdateRoleRequest $request)
     {
+        $request->validate([
+            'name'=> 'required|string',
+        ]);
         try {
             $role->name = $request['name'];
             $role->update();
@@ -74,6 +79,9 @@ class RoleAdminSuperController extends Controller
 
     public function user_roleUpdate(User $user, Request $request)
     {
+        $request->validate([
+            'name'=> 'required|string',
+        ]);
         try {
             $user->name = $request->name;
             $user->email = $request->email;

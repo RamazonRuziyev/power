@@ -25,14 +25,20 @@ class AuthController extends Controller
         Auth::logout();
         return redirect()->route('login');
     }
-    public function save(StoreRegisterRequest $request)
+    public function save(Request $request)
     {
-        $users = User::cretae([
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required'
+         ]);
+        $users = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role_id' => 3
         ]);
+        Auth::login($users);
         return redirect()->route('login');
     }
     public function sing(Request $request)

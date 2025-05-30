@@ -7,7 +7,7 @@
                 <div class="card-header">
                     <h3 class="card-title">Profil sozlamalari</h3>
                 </div>
-                <form action="{{route('update.settingSuper',\Illuminate\Support\Facades\Auth::user()->i    d)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('update.settingSuper',\Illuminate\Support\Facades\Auth::user()->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="card-body">

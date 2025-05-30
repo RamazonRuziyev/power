@@ -52,7 +52,7 @@
                                         <form action="{{route('superAdmin.petition.delete',$petition->id)}}" method="post" >
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-danger">Delete</button>
+                                            <button class="btn btn-danger delete">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -67,3 +67,27 @@
         </div>
     </div>
 @endsection
+@push('script')
+    <script>
+        $(function (){
+            $('.delete').on('click',function (e)
+            {
+                e.preventDefault();
+                var form = $(this).closest('form');
+                swal({
+                    title : "Are you sure ?",
+                    text : "You want to delete this record",
+                    type : "warning",
+                    buttons : ["No","Yes"],
+                    confirmButtonColor: "#dc3545"
+                }).then(function (result)
+                {
+                    if (result)
+                    {
+                        form.submit()
+                    }
+                })
+            })
+        })
+    </script>
+@endpush

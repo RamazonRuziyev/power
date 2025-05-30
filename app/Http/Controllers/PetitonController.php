@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Events\PetitionEvent;
-use App\Http\Requests\StorePetitionRequest;
 use App\Models\Petition;
 use App\Models\User;
 use App\Notifications\PetitionCreatedNotification;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -37,7 +35,7 @@ class PetitonController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePetitionRequest $request)
+    public function store(Request $request)
     {
         try {
             $petition = new  Petition();
@@ -86,6 +84,11 @@ class PetitonController extends Controller
      */
     public function update(Request $request, Petition $petition)
     {
+        $request->validate([
+            'fio' => 'required',
+            'mfy' => 'required',
+            'employee' => 'required'
+        ]);
         try {
             $petition->fio = $request->name;
             $petition->mfy = $request->mfy;

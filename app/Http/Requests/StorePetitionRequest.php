@@ -11,7 +11,7 @@ class StorePetitionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,12 +22,12 @@ class StorePetitionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'fio' => 'required|string',
-            'mfy' => 'required|string',
-            'village' => 'required|string',
-            'phone' => 'required|max:13',
-            'description' => 'required',
-            'employee' => 'required',
+//            'fio' => 'required|string',
+//            'mfy' => 'required|string',
+//            'village' => 'required|string',
+//            'phone' => 'required|max:13',
+//            'description' => 'required',
+//            'employee' => 'required',
         ];
     }
 }
